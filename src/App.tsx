@@ -1,11 +1,14 @@
 
-import { Button } from './components/ui/button'
+import { Outlet } from 'react-router'
+import Navbar from './components/ui/layout/Navbar'
+
 
 function App() {
- 
+
   return (
     <>
-     <Button>push</Button>
+      <Navbar />
+      <Outlet />
     </>
   )
 }
