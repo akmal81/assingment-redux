@@ -1,6 +1,8 @@
 
 
 import { useState } from "react";
+import { ModeToggle } from "../ui/mode-toggle";
+import { Link } from "react-router";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +10,7 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <nav className="text-white">
+        <nav >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo or Title */}
@@ -16,22 +18,23 @@ const Navbar = () => {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-6">
-                        <a href="#" className="hover:text-gray-200">
+                        <Link to="/books" className="hover:text-gray-500">
                             All Books
-                        </a>
-                        <a href="#" className="hover:text-gray-200">
+                        </Link>
+                        <Link to="/create-book" className="hover:text-gray-500">
                             Add Book
-                        </a>
-                        <a href="#" className="hover:text-gray-200">
+                        </Link>
+                        <Link to="/borrow-summary" className="hover:text-gray-500">
                             Borrow Summary
-                        </a>
+                        </Link>
+                        <ModeToggle />
                     </div>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
-                            className="focus:outline-none text-white"
+                            className="focus:outline-none"
                         >
                             ☰
                         </button>
@@ -41,15 +44,15 @@ const Navbar = () => {
                 {/* Mobile Menu Dropdown */}
                 {isOpen && (
                     <div className="md:hidden mt-2 space-y-2 pb-4">
-                        <a href="#" className="block px-2 py-1 hover:text-gray-200 rounded">
+                        <Link to="/books" className="block px-2 py-1 hover:text-gray-500 rounded">
                             All Books
-                        </a>
-                        <a href="#" className="block px-2 py-1 hover:text-gray-200 rounded">
+                        </Link>
+                        <Link to="/add-book" className="block px-2 py-1 hover:text-gray-500 rounded">
                             Add Book
-                        </a>
-                        <a href="#" className="block px-2 py-1 hover:text-gray-200 rounded">
+                        </Link>
+                        <Link to="/borrow-summary" className="block px-2 py-1 hover:text-gray-500 rounded">
                             Borrow Summary
-                        </a>
+                        </Link>
                     </div>
                 )}
             </div>

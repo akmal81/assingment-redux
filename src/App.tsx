@@ -1,14 +1,19 @@
 
 import { Outlet } from 'react-router'
-import Navbar from './components/ui/layout/Navbar'
+import Navbar from './components/layout/Navbar'
+import { Toaster } from './components/ui/sonner'
 
 
 function App() {
 
   return (
     <>
+
+      <Toaster richColors position="top-center" />
       <Navbar />
-      <Outlet />
+      <main className='max-w-7xl mx-auto'>
+        <Outlet />
+      </main>
     </>
   )
 }
