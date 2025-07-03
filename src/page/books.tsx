@@ -1,7 +1,9 @@
 import BookTable from "@/components/layout/BookTable";
 import Spinner from "@/components/layout/Spinner";
+import { Button } from "@/components/ui/button";
 import { useGetBooksQuery } from "@/redux/api/baseApi";
 import type { IBook } from "@/type";
+import { Link } from "react-router";
 
 const Books = () => {
 
@@ -17,6 +19,7 @@ const Books = () => {
     }
     return (
         <div className="overflow-x-auto">
+            <div className="flex justify-end mt-4 mb-4"> <Link to="/create-book"><Button>Add Book</Button></Link></div>
             <table className="min-w-full border border-gray-300 text-sm text-left">
                 <thead >
                     <tr>

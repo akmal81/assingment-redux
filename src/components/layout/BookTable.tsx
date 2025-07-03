@@ -1,8 +1,8 @@
 import type { IBook } from "@/type";
-import { Button } from "../ui/button";
-import { BookOpen, BookPlus, Trash2 } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import { EditBookModal } from "./EditBook";
+import { DeleteModal } from "./DeleteModal";
 
 interface IProps {
     book: IBook
@@ -11,7 +11,7 @@ interface IProps {
 
 
 const BookTable = ({ book }: IProps) => {
-    
+
     return (
         <tr className="hover:bg-gray-900 w-fit no-w">
             <td className="px-4 py-2 border">{book.title}</td>
@@ -24,12 +24,11 @@ const BookTable = ({ book }: IProps) => {
                 {book.copies ? "available" : "unavailable"}
             </td>
             <td className="px-4 py-2 border text-center">
-                <div className="flex flex-nowrap">
-                    <Link to="/create-book"><BookPlus /></Link>
-                    <EditBookModal id={book._id}/>
+                <div className="flex flex-nowrap gap-4 items-center">
+
+                    <EditBookModal id={book._id} />
                     <Link to={`/books/${book._id}`}><BookOpen /></Link>
-                    
-                    <Button variant="link" title="Delete Book" className="border-r-2 rounded-none text-red-500"><Trash2 /></Button>
+                    <DeleteModal id={book._id} />
                 </div>
             </td>
         </tr>

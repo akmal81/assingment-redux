@@ -1,17 +1,17 @@
 
 import type { IBook } from '@/type'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { b } from 'node_modules/react-router/dist/development/lib-B33EY9A0.d.mts';
+
 
 export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
-    tagTypes: ["book"],
+    tagTypes: ["book", "borrow"],
     endpoints: (builder) => (
         {
             getBooks: builder.query({
                 query: () => "books",
-                providesTags: ["book"]
+                providesTags: ["book", "borrow"]
             }),
             createBook: builder.mutation({
                 query: (bookData) => ({
@@ -21,11 +21,20 @@ export const baseApi = createApi({
                 }),
                 invalidatesTags: ["book"]
             }),
+            // borrow a book
+            createBorrow: builder.mutation({
+                query: (borrowData) => ({
+                    url: "/borrow",
+                    method: "POST",
+                    body: borrowData
+                }),
+                invalidatesTags: ["borrow"]
+            }),
             // get single book
 
             getSingleBook: builder.query<IBook, string>({
                 query: (id) => `/books/${id}`,
-                transformResponse:(response:{success:boolean; data:IBook}) => response.data
+                transformResponse: (response: { success: boolean; data: IBook }) => response.data
             }),
 
             // editbook
@@ -35,7 +44,7 @@ export const baseApi = createApi({
                     method: 'PUT',
                     body: bookData,
                 }),
-                invalidatesTags: ["book"]
+                invalidatesTags: ["book",]
             }),
 
 
@@ -48,6 +57,17 @@ export const baseApi = createApi({
                 invalidatesTags: ["book"],
             }),
 
+            deleteBook: builder.mutation({
+                query: ({ id }) => ({
+                    url: `/books/${id}`,
+                    method: "DELETE",
+
+                }),
+                invalidatesTags: ["book"],
+            }),
+
+
+
 
         }
     )
@@ -58,5 +78,7 @@ export const {
     useCreateBookMutation,
     useEditBookMutation,
     useGetSingleBookQuery,
-    useUpdateBookMutation
+    useUpdateBookMutation,
+    useCreateBorrowMutation,
+    useDeleteBookMutation
 } = baseApi
