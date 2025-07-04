@@ -10,7 +10,11 @@ import { Link, useParams } from "react-router";
 const BookDetails = () => {
 
     const { id } = useParams() as { id: string };
-    const { data: book, isLoading } = useGetSingleBookQuery(id as string);
+    const { data, isLoading } = useGetSingleBookQuery(id as string);
+
+    
+    const bookData = data.book;
+   
 
     if (isLoading) {
         return <Spinner />
@@ -26,30 +30,30 @@ const BookDetails = () => {
 
             <div className="max-w-4xl mx-auto space-y-4">
                 <div className="border px-4 py-4 rounded-lg">
-                    {book?.title}
+                    {bookData?.title}
                 </div>
                 <div className="border px-4 py-4 rounded-lg">
-                    {book?.author}
+                    {bookData?.author}
                 </div>
                 <div className="border px-4 py-4 rounded-lg">
-                    {book?.description}
+                    {bookData?.description}
                 </div>
                 <div className="border px-4 py-4 rounded-lg">
-                    {book?.genre}
+                    {bookData?.genre}
                 </div>
                 <div className="border px-4 py-4 rounded-lg">
-                    {book?.isbn}
+                    {bookData?.isbn}
                 </div>
                 <div className="border px-4 py-4 rounded-lg">
                     {
-                        book?.copies ? "Available" : "Unavailable"
+                        bookData?.copies ? "Available" : "Unavailable"
                     }
                 </div>
                 {
-                    !book?.copies && <Link to="/books"><ArrowBigLeft/> </Link>
+                    !bookData?.copies && <Link to="/books"><ArrowBigLeft/> </Link>
                 }
                 {
-                    !book?.copies ? "Please wait return from other bowrror" :
+                    !bookData?.copies ? "Please wait return from other bowrror" :
                         <BorrowBook id={id} />
                 }
             </div>

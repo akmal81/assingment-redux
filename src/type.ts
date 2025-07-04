@@ -14,3 +14,11 @@ export interface IBorrow{
     quantity:number;
     dueDate:Date
 }
+export interface ISummary{
+    totalQuantity: number;
+    book:{
+        title: string,
+        isbn: string
+    }
+   
+}

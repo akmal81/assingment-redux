@@ -1,5 +1,4 @@
 
-import type { IBook } from '@/type'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
@@ -7,7 +6,7 @@ export const baseApi = createApi({
     reducerPath: 'baseApi',
     // baseQuery: fetchBaseQuery({ baseUrl: 'https://assignment-mongodb.vercel.app/api' }),
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
-    tagTypes: ["book", "borrow"],
+    tagTypes: ["book", "borrow", "borrowSummary"],
     endpoints: (builder) => (
         {
             getBooks: builder.query({
@@ -29,13 +28,18 @@ export const baseApi = createApi({
                     method: "POST",
                     body: borrowData
                 }),
-                invalidatesTags: ["borrow"]
+                invalidatesTags: ["borrow", "borrowSummary"]
             }),
+            // borrow summary
+            getBorrowSummary: builder.query({
+                query: () => "borrow",
+                providesTags: ["borrowSummary"]
+            }),
+
             // get single book
 
-            getSingleBook: builder.query<IBook, string>({
-                query: (id) => `/books/${id}`,
-                transformResponse: (response: { success: boolean; data: IBook }) => response.data
+            getSingleBook: builder.query({
+                query: (id) => `/books/${id}`
             }),
 
             // editbook
@@ -81,5 +85,6 @@ export const {
     useGetSingleBookQuery,
     useUpdateBookMutation,
     useCreateBorrowMutation,
-    useDeleteBookMutation
+    useDeleteBookMutation,
+    useGetBorrowSummaryQuery,
 } = baseApi

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ModeToggle } from "../ui/mode-toggle";
 import { Link } from "react-router";
+import { BookOpenCheck } from "lucide-react";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,10 +12,11 @@ const Navbar = () => {
 
     return (
         <nav >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  bg-accent">
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo or Title */}
-                    <div className="text-xl font-bold">Library</div>
+                    <div className="text-xl font-bold flex items-center gap-2"><BookOpenCheck className="text-green-500"/> Library</div>
+                    
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-6">
@@ -53,6 +55,7 @@ const Navbar = () => {
                         <Link to="/borrow-summary" className="block px-2 py-1 hover:text-gray-500 rounded">
                             Borrow Summary
                         </Link>
+                        <ModeToggle />
                     </div>
                 )}
             </div>

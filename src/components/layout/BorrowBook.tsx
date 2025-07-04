@@ -42,7 +42,7 @@ export function BorrowBook({ id }: IProps) {
         const formData = new FormData(event.currentTarget)
 
         const borrowData = {
-            book: formData.get("bookId"),
+            book: id,
             quantity: formData.get("quantity"),
             dueDate: date?.toISOString().replace("Z", "+00:00")
         }
@@ -76,17 +76,17 @@ export function BorrowBook({ id }: IProps) {
                 </DialogHeader>
                 <form onSubmit={handleSubmit}>
                     <div className="grid gap-4">
-                        <div className="grid gap-3">
+                        {/* <div className="grid gap-3">
                             <Label>Book Id</Label>
-                            <Input name="bookId" defaultValue={id} value={id} />
-                        </div>
+                            <Input name="bookId" defaultValue={id}  disabled value={id} />
+                        </div> */}
                         <div className="grid gap-3">
                             <Label >Quantity</Label>
                             <Input name="quantity" />
                         </div>
                         <div className="grid gap-3">
                             <Label >Due Date</Label>
-                            {/* <Input name="dueDate" defaultValue={new Date().toISOString()} /> */}
+                           
 
                             <div className="grid gap-3">
                                 <Popover open={open} onOpenChange={setOpen}>

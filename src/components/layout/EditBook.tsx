@@ -14,6 +14,7 @@ import { useGetSingleBookQuery, useUpdateBookMutation } from "@/redux/api/baseAp
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Pencil } from "lucide-react";
+import type { IBook } from "@/type";
 
 interface IProps {
   id: string;
@@ -21,29 +22,32 @@ interface IProps {
 
 const EditBookModal = ({ id }: IProps) => {
   const [openModal, setOpenModal] = useState(false)
-  const { data: book, isLoading } = useGetSingleBookQuery(id);
+  const { data: book, isLoading } = useGetSingleBookQuery(id!);
   const [updateBook, { isLoading: isUpdating }] = useUpdateBookMutation();
 
+  // console.log(book.book)
+  
   const {
     register,
     handleSubmit,
     reset,
     // formState: { errors },
-  } = useForm();
+  } = useForm<IBook>();
 
   useEffect(() => {
-    if (book) {
-      reset(book);
+    if (book?.book) {
+      reset(book?.book);
     }
-  }, [book, reset]);
+  }, [book?.book, reset]);
 
-  const onSubmit = async (formData: any) => {
+  const onSubmit = async (formData: IBook) => {
     try {
       await updateBook({ id, data: formData }).unwrap();
       toast.success("Book updated successfully");
       setOpenModal(false)
     } catch (error) {
       toast.error("Failed to update book");
+      console.log(error)
     }
   };
 

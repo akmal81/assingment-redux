@@ -11,7 +11,7 @@ function App() {
 
       <Toaster richColors position="top-center" />
       <Navbar />
-      <main className='max-w-7xl mx-auto'>
+      <main className='max-w-7xl mx-auto bg-accent'>
         <Outlet />
       </main>
     </>
