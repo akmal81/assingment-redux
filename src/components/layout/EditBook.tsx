@@ -28,7 +28,7 @@ const EditBookModal = ({ id }: IProps) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   useEffect(() => {

@@ -29,6 +29,7 @@ import { useCreateBookMutation } from "@/redux/api/baseApi"
 // import { toast } from "sonner"
 // import Spinner from "@/components/layout/Spinner"
 import { toast } from "sonner"
+import { useNavigate } from "react-router"
 
 
 // const formSchema = z.object({
@@ -38,6 +39,7 @@ import { toast } from "sonner"
 // })
 
 const AddBook = () => {
+    const navigate = useNavigate()
 
     const form = useForm<IBook>({
         defaultValues: {
@@ -63,7 +65,7 @@ const AddBook = () => {
         await createBook(bookData).unwrap();
         toast.success("Book Created Successfully ✅")
         form.reset();
-
+        navigate("/books")
     }
 
     return (
