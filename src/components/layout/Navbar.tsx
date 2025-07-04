@@ -15,18 +15,18 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  bg-accent">
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo or Title */}
-                    <div className="text-xl font-bold flex items-center gap-2"><BookOpenCheck className="text-green-500"/> Library</div>
+                    <div className="text-xl font-bold flex items-center gap-2"><BookOpenCheck className="text-green-500"/> Library<span className="text-green-500 text-2xl">MS</span> </div>
                     
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-6">
-                        <Link to="/books" className="hover:text-gray-500">
+                        <Link to="/books" className="hover:text-green-500">
                             All Books
                         </Link>
-                        <Link to="/create-book" className="hover:text-gray-500">
+                        <Link to="/create-book" className="hover:text-green-500">
                             Add Book
                         </Link>
-                        <Link to="/borrow-summary" className="hover:text-gray-500">
+                        <Link to="/borrow-summary" className="hover:text-green-500">
                             Borrow Summary
                         </Link>
                         <ModeToggle />

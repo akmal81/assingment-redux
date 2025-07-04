@@ -33,7 +33,7 @@ export function DeleteModal({ id }: IProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="bg-white/0"><Trash2  className="text-red-700"/></Button>
+                <Button className="bg-white/0 hover:bg-white/0 cursor-pointer" title="Delete"><Trash2  className="text-red-700"/></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>

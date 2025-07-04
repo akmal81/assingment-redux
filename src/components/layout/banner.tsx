@@ -9,7 +9,7 @@ const Banner = () => {
         bg-cover bg-center lg:bg-top-right">
             <div className="w-full min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
                 <div className=" sm:w-full md: lg:w-2/4 p-10 text-center space-y-6
-                flex flex-col justify-center bg-black/75 items-center ">
+                flex flex-col justify-center bg-black/75 items-center rounded-md">
                     <h1 className="text-white text-5xl font-bold">
                         Manage Your Library with Ease and Efficiency
                     </h1>

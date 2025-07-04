@@ -43,10 +43,18 @@ export function BorrowBook({ id }: IProps) {
 
         const borrowData = {
             book: id,
-            quantity: formData.get("quantity"),
+            quantity: parseInt(formData.get("quantity")as string, 10),
             dueDate: date?.toISOString().replace("Z", "+00:00")
         }
-        console.log(borrowData)
+
+        if (!borrowData.quantity && borrowData.quantity < 1) {
+            toast.error("Please Provide quantity");
+            return
+        }
+        if (!borrowData.dueDate) {
+            toast.error("Please Provide Due Date");
+            return
+        }
 
         try {
             await createBorrow(borrowData).unwrap();
@@ -76,18 +84,13 @@ export function BorrowBook({ id }: IProps) {
                 </DialogHeader>
                 <form onSubmit={handleSubmit}>
                     <div className="grid gap-4">
-                        {/* <div className="grid gap-3">
-                            <Label>Book Id</Label>
-                            <Input name="bookId" defaultValue={id}  disabled value={id} />
-                        </div> */}
+
                         <div className="grid gap-3">
-                            <Label >Quantity</Label>
+                            <Label >Quantity *</Label>
                             <Input name="quantity" />
                         </div>
                         <div className="grid gap-3">
-                            <Label >Due Date</Label>
-                           
-
+                            <Label >Due Date *</Label>
                             <div className="grid gap-3">
                                 <Popover open={open} onOpenChange={setOpen}>
                                     <PopoverTrigger asChild>

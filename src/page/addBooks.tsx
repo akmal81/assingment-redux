@@ -30,6 +30,7 @@ import { useCreateBookMutation } from "@/redux/api/baseApi"
 // import Spinner from "@/components/layout/Spinner"
 import { toast } from "sonner"
 import { useNavigate } from "react-router"
+import OtherBanner from "@/components/layout/OtherBanner"
 
 
 // const formSchema = z.object({
@@ -69,12 +70,14 @@ const AddBook = () => {
     }
 
     return (
-        <div className="max-w-4xl mx-auto mt-52 bg-gray-500/5 p-10 rounded-xl shadow-xl">
-            <h1></h1>
+        <>
+        <OtherBanner level="Add Book"/>
+        <div className="max-w-4xl mx-auto  bg-gray-500/5 p-10 my-10 rounded-xl shadow-xl">
+            <p className="mb-4 text-xs"> Fields marked with <span className="text-red-500">*</span> are required</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     {/* first row */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* title */}
 
                         <FormField
@@ -82,7 +85,7 @@ const AddBook = () => {
                             name="title"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Book Title</FormLabel>
+                                    <FormLabel>Book Title <span className="text-red-500">*</span></FormLabel>
                                     <FormControl>
                                         <Input placeholder="Book Title" {...field} value={field.value || ""} />
                                     </FormControl>
@@ -97,7 +100,7 @@ const AddBook = () => {
                             name="author"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Author</FormLabel>
+                                    <FormLabel>Author<span className="text-red-500">*</span></FormLabel>
                                     <FormControl>
                                         <Input placeholder="auther" {...field} value={field.value || ""} />
                                     </FormControl>
@@ -107,21 +110,8 @@ const AddBook = () => {
                         />
                     </div>
                     {/* 2nd row */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* genre */}
-                        {/* <FormField
-                        control={form.control}
-                        name="genre"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Genre</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Genre" {...field} value={field.value || ""} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    /> */}
 
                         <FormField
 
@@ -129,7 +119,7 @@ const AddBook = () => {
                             name="genre"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Genre</FormLabel>
+                                    <FormLabel>Genre<span className="text-red-500">*</span></FormLabel>
                                     <Select onValueChange={field.onChange}>
                                         <FormControl>
                                             <SelectTrigger className="w-full">
@@ -150,17 +140,13 @@ const AddBook = () => {
                                 </FormItem>
                             )}
                         />
-
-
-
-
                         {/* isbn */}
                         <FormField
                             control={form.control}
                             name="isbn"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>isbn</FormLabel>
+                                    <FormLabel>Isbn<span className="text-red-500">*</span><span className="text-red-500 text-xs">(isbn should be Unique)</span></FormLabel>
                                     <FormControl>
                                         <Input placeholder="Isbn number" {...field} value={field.value || ""} />
                                     </FormControl>
@@ -171,14 +157,14 @@ const AddBook = () => {
                     </div>
 
                     {/* 3 row */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* description */}
                         <FormField
                             control={form.control}
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Description</FormLabel>
+                                    <FormLabel>Description<span className="text-red-500">*</span></FormLabel>
                                     <FormControl>
                                         <Input placeholder="Book description" {...field} value={field.value || ""} />
                                     </FormControl>
@@ -192,7 +178,7 @@ const AddBook = () => {
                             name="copies"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Copies</FormLabel>
+                                    <FormLabel>Copies<span className="text-red-500">*</span></FormLabel>
                                     <FormControl>
                                         <Input
                                             placeholder="Book Copies"
@@ -206,14 +192,12 @@ const AddBook = () => {
                             )}
                         />
                     </div>
-
-
-
-
-                    <Button type="submit">Submit</Button>
+            
+                    <Button className="bg-green-500" type="submit">Add</Button>
                 </form>
             </Form>
         </div>
+        </>
     )
 };
 

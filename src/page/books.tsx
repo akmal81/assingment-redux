@@ -1,4 +1,3 @@
-import BookTable from "@/components/layout/BookTable";
 import Spinner from "@/components/layout/Spinner";
 import { Button } from "@/components/ui/button";
 import { useGetBooksQuery } from "@/redux/api/baseApi";
@@ -32,32 +31,7 @@ const Books = () => {
                     <Button className="bg-green-600"><BookPlus className="font-bold" />Add Book</Button></Link>
                 </div>
             </div>
-            {/* <table className="min-w-full border border-gray-300 text-sm text-left">
-                <thead >
-                    <tr>
-                        <th className="px-4 py-2 border">Title</th>
-                        <th className="px-4 py-2 border">Author</th>
-                        <th className="px-4 py-2 border">Genre</th>
-                        <th className="px-4 py-2 border">ISBN</th>
-                        <th className="px-4 py-2 border">Description</th>
-                        <th className="px-4 py-2 border">Copies</th>
-                        <th className="px-4 py-2 border">Available</th>
-                        <th className="px-4 py-2 border">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        !isLoading &&
-                        data.books.map((book: IBook) => <BookTable book={book} key={book._id}></BookTable>)
-                    }
-                </tbody>
-            </table> */}
-
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8">
-                    {/* <div>book1</div>
-                    <div>book2</div>
-                    <div>book3</div>
-                    <div>book4</div> */}
                     {
                         !isLoading &&
                         data.books.map((book: IBook) => <BookCard book={book} key={book._id}></BookCard>)

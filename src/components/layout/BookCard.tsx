@@ -27,6 +27,7 @@ const BookCard = ({ book }: IProps) => {
 
 
     return (
+         <Link to={`/books/${book._id}`}>
         <div className="mt-4 p-2 rounded-md shadow-xl">
             <img src={image} />
             <div className="mt-4 flex flex-col flex-grow  space-y-3">
@@ -42,15 +43,17 @@ const BookCard = ({ book }: IProps) => {
                 }</p> */}
 
                 {
-                    !book.copies ? <p className="text-center pb-4 text-red-700">Unavailable</p>:<p className="text-center pb-4 text-green-700">Available</p>
+                    !book.copies ? <p className="text-center pb-4 text-red-700">Unavailable</p> : <p className="text-center pb-4 text-green-700">Available</p>
                 }
             </div>
             <div className="flex justify-between items-center px-2 border-t-2 py-2">
-                <EditBookModal id={book._id} />
+                <button className="cursor-pointer">
+                    <EditBookModal id={book._id} />
+                </button>
                 <Link to={`/books/${book._id}`}><BookOpen className="text-xs" /></Link>
                 <DeleteModal id={book._id} />
             </div>
-        </div>
+        </div></Link>
     );
 };
 
