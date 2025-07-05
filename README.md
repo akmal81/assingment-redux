@@ -20,9 +20,33 @@ A React-based book management system that allows users to view, borrow, and mana
 - 🔍 Get detailed book information
 - 📥 Borrow book functionality
 - 📊 Borrow summary tracking
-- ✅ Form validation and feedback (with `react-hook-form` and `zod`)
 - 🔁 Optimistic updates with RTK Query
 - 🎨 Responsive and clean UI using Tailwind CSS
+
+---
+
+## 🔁 Page List
+
+- ✅ /books – Displays a list of all books with options to view, edit, delete, and borrow.
+- ✅ /create-book – Form interface to add a new book to the system.
+- ✅ /books/:id – Detailed view of a single book’s information.
+- ✅/edit-book/:id – Interface to update an existing book’s details
+- ✅ /borrow/:bookId – Form to borrow a selected book.
+- ✅ /borrow-summary – Displays an aggregated summary of all borrowed books.
+
+
+## 🔁 Backend (MVC Pattern)
+
+# Database MongoBD
+
+- 🔁 Books (with attributes like title, author, genre, isbn, description, copies, available)
+- 🔁 Borrows (linked to book, quantity, dueDate etc)
+
+# Book Management:
+- 🔁 Implement CRUD operations for book (create, read, update, delete).
+
+# Borrow Management
+- 🔁 Execute CRUD operations for borrow (borrow, summery), ensuring copies levels before borrow are placed.
 
 ---
 
@@ -37,6 +61,7 @@ A React-based book management system that allows users to view, borrow, and mana
 | React Router     | Routing and navigation                     |
 | React Hook Form  | Form management                            |          
 | Shadcn           | Component Library                          |
+| MongoDB          | Database                                   |
           
 ---
 
