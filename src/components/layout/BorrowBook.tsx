@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useCreateBorrowMutation } from "@/redux/api/baseApi"
+import { useCreateBorrowMutation, useGetSingleBookQuery } from "@/redux/api/baseApi"
 import { BookOpen, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
@@ -31,6 +31,9 @@ export function BorrowBook({ id }: IProps) {
     const [date, setDate] = useState<Date | undefined>(undefined)
 
 
+    const{data}=useGetSingleBookQuery(id);
+    const bookData = data.book
+    console.log(bookData.copies)
 
     const [createBorrow] = useCreateBorrowMutation()
 
@@ -54,9 +57,14 @@ export function BorrowBook({ id }: IProps) {
             return
         }
 
+        if(bookData.copies< borrowData.quantity){
+            toast.error(`Only ${bookData.copies} copies are available. Please provide a valid number within the available limit`);
+            return
+        }
+
         try {
             await createBorrow(borrowData).unwrap();
-            toast.success("Book Created Successfully ✅");
+            toast.success("Book Borrowed Successfully ✅");
             setOpenModal(false);
             navigate("/books");
 
@@ -75,21 +83,20 @@ export function BorrowBook({ id }: IProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
+                    <DialogTitle>Borrow Book</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you&apos;re
-                        done.
+                        The Mark field is required <span className="text-red-500 text-xl">*</span>.
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit}>
                     <div className="grid gap-4">
 
                         <div className="grid gap-3">
-                            <Label >Quantity *</Label>
+                            <Label >Quantity <span className="text-red-500">*</span></Label>
                             <Input name="quantity" />
                         </div>
                         <div className="grid gap-3">
-                            <Label >Due Date *</Label>
+                            <Label >Due Date <span className="text-red-500">*</span></Label>
                             <div className="grid gap-3">
                                 <Popover open={open} onOpenChange={setOpen}>
                                     <PopoverTrigger asChild>
@@ -125,7 +132,7 @@ export function BorrowBook({ id }: IProps) {
                         <DialogClose asChild>
                             <Button variant="outline">Cancel</Button>
                         </DialogClose>
-                        <Button type="submit">Borrow</Button>
+                        <Button type="submit" className="bg-green-500 text-black hover:bg-green-300">Borrow</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

@@ -54,7 +54,7 @@ const EditBookModal = ({ id }: IProps) => {
   return (
     <Dialog open={openModal} onOpenChange={setOpenModal}>
       <DialogTrigger asChild>
-        <Button className="cursor-pointer" variant="link" title="Edit Book">
+        <Button className="cursor-pointer" variant="link">
           <Pencil />
         </Button>
       </DialogTrigger>

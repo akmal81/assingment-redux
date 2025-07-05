@@ -194,7 +194,7 @@ const AddBook = () => {
                         />
                     </div>
             
-                    <Button className="bg-green-500" type="submit">Add</Button>
+                    <Button className="bg-green-500 hover:bg-green-300 text-black w-full" type="submit">Add</Button>
                 </form>
             </Form>
         </div>

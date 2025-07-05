@@ -5,11 +5,15 @@ import type { IBook } from "@/type";
 import { Link } from "react-router";
 
 import Banner from "@/components/layout/banner";
-import { BookPlus } from "lucide-react";
+import { BookPlus, Grid, Table2 } from "lucide-react";
 // import BookCard from "@/components/layout/BookCard";
 import BookTable from "@/components/layout/BookTable";
+import BookCard from "@/components/layout/BookCard";
+import { useState } from "react";
 
 const Books = () => {
+
+    const [view, setView]=useState(false)
 
     const { data, isLoading, } = useGetBooksQuery(undefined)
 
@@ -34,10 +38,16 @@ const Books = () => {
                 </div>
             </div>
             {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8"> */}
-            <div className="mt-16 px-10 py-10">
+            <div className="flex justify-end px-10 mt-16">
+                <button onClick={()=>setView(!view)}>{view?<div className="flex gap-2 cursor-pointer"><Table2/></div>:
+                <div className="flex gap-2 cursor-pointer"><Grid/></div>}</button>
+               
+            </div>
+            { !view?
+            <div className="px-10 ">
 
                 <table className="table-auto w-full border-collapse border border-gray-700 text-sm text-left">
-                    <thead className="bg-gray-800 text-white">
+                    <thead className="bg-green-800/75 text-white">
                         <tr>
                             <th className="px-4 py-2 border">Title</th>
                             <th className="px-4 py-2 border">Author</th>
@@ -57,6 +67,16 @@ const Books = () => {
                     </tbody>
                 </table>
             </div>
+            :
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8  lg:px-8">
+
+                        {
+                            !isLoading &&
+                            data.books.map((book: IBook) => <BookCard book={book} key={book._id}></BookCard>)
+                        }
+                    
+            </div>
+            }
         </div>
     );
 };
