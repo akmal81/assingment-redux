@@ -5,11 +5,12 @@ import type { IBook } from "@/type";
 import { Link } from "react-router";
 
 import Banner from "@/components/layout/banner";
-import { BookPlus, Grid, Table2 } from "lucide-react";
+import { BookPlus, Grid, Grid2X2, Table2, Table2Icon } from "lucide-react";
 // import BookCard from "@/components/layout/BookCard";
 import BookTable from "@/components/layout/BookTable";
 import BookCard from "@/components/layout/BookCard";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const Books = () => {
 
@@ -31,20 +32,33 @@ const Books = () => {
                 <div className="">
                     <h2 className="text-3xl font-bold">Popular Books</h2>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-6">
+                    <div className="flex flex-nowrap gap-1">
+                <button onClick={()=>setView(!view)}><Table2Icon className={cn(
+                    "text-gray-800",
+                    !view && "text-green-500"
+                    )} /></button>
+
+                <button onClick={()=>setView(!view)}><Grid2X2 className={cn(
+                    "text-gray-800",
+                    view && "text-green-500"
+                    )}  /></button>
+            </div>
                     <Link to="/create-book">
                         <Button className="bg-green-500 text-black hover:bg-green-300"><BookPlus className="font-bold" />
                             Add Book</Button></Link>
                 </div>
             </div>
             {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8"> */}
-            <div className="flex justify-end px-10 mt-16">
+            {/* <div className="flex justify-end px-10 mt-16">
                 <button onClick={()=>setView(!view)}>{view?<div className="flex gap-2 cursor-pointer"><Table2/></div>:
                 <div className="flex gap-2 cursor-pointer"><Grid/></div>}</button>
-               
-            </div>
+            </div> */}
+
+            
+
             { !view?
-            <div className="px-10 ">
+            <div className="px-10 mt-10">
 
                 <table className="table-auto w-full border-collapse border border-gray-700 text-sm text-left">
                     <thead className="bg-green-800/75 text-white">

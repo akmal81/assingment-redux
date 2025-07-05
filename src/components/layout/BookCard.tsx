@@ -29,15 +29,15 @@ const BookCard = ({ book }: IProps) => {
 
     const randomIndex = Math.floor(Math.random() * coverImages.length);
     const image = coverImages[randomIndex]
-const handleClick = ()=>{
-    toast.error('Book is not available right now. please wait for return form other borrower')
-}
+    const handleClick = () => {
+        toast.error('Book is not available right now. please wait for return form other borrower')
+    }
 
     return (
         <div className="mt-4 p-2 rounded-md shadow-xl">
             <Link to={`/books/${book._id}`}>
-            <img src={image} />
-        </Link>
+                <img src={image} />
+            </Link>
             <div className="mt-4 flex flex-col flex-grow  space-y-3">
                 <h4 className="font-semibold text-xl text-center">
                     {book.title}
@@ -54,44 +54,43 @@ const handleClick = ()=>{
                     !book.copies ? <p className="text-center pb-4 text-red-700">Unavailable</p> : <p className="text-center pb-4 text-green-700">Available</p>
                 }
             </div>
+            <div className="flex items-center justify-center">
+                <Link to={`/books/${book._id}`}>
+                    <Button variant="link" className="text-gray-400 text-center hover:text-green-500" >
+
+                        View Details
+                    </Button>
+                </Link>
+            </div>
             <div className="flex justify-between items-center px-2 border-t-2 py-2">
-                {/* <button className="cursor-pointer">
-                    <EditBookModal id={book._id} />
-                </button>
-                <Link to={`/books/${book._id}`}><BookOpen className="text-xs" /></Link>
-                <DeleteModal id={book._id} /> */}
 
-                 <Tooltip>
-                        <TooltipTrigger>
-                            <EditBookModal id={book._id} />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Edit Book
-                        </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                        <TooltipTrigger>
-                            {
-                                book.copies ? <BorrowBook id={book._id} /> : <Button onClick={handleClick} className="disable text-gray-500"
-                                    variant="link"><BookOpen /></Button>
-                            }
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Borrow Book
-                        </TooltipContent>
-                    </Tooltip>
-
-                     <Tooltip>
-                        <TooltipTrigger>
-
-                            <DeleteModal id={book._id} />
-
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Delete Book
-                        </TooltipContent>
-                    </Tooltip>
+                <Tooltip>
+                    <TooltipTrigger>
+                        <EditBookModal id={book._id} />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        Edit Book
+                    </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                    <TooltipTrigger>
+                        {
+                            book.copies ? <BorrowBook id={book._id} /> : <Button onClick={handleClick} className="disable text-gray-500"
+                                variant="link"><BookOpen /></Button>
+                        }
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        Borrow Book
+                    </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                    <TooltipTrigger>
+                        <DeleteModal id={book._id} />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        Delete Book
+                    </TooltipContent>
+                </Tooltip>
             </div>
         </div>
     );
