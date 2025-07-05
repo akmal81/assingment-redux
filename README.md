@@ -35,8 +35,9 @@ A React-based book management system that allows users to view, borrow, and mana
 | TypeScript       | Type safety throughout the project         |
 | Tailwind CSS     | Utility-first CSS framework                |
 | React Router     | Routing and navigation                     |
-| React Hook Form  | Form management                            |
-|
+| React Hook Form  | Form management                            |          
+| Shadcn           | Component Library                          |
+          
 ---
 
 ## 📦 Installation
@@ -51,9 +52,6 @@ npm install
 
 npm run dev
 
-
-📷 ![Home Page](./screenshots/home.png)
-📷 ![Book Details](./screenshots/book-details.png)
 
 🔗 Connect
 Author: Akmal Hossain
