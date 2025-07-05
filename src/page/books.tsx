@@ -18,10 +18,10 @@ const Books = () => {
         return <Spinner />
     }
     if (!data) {
-        return <h1>No data found</h1>
+        return <div className="min-h-screen max-w-screen flex items-center justify-center"><h1 className="font-bold text-5xl"> 404 No data found</h1></div>
     }
     return (
-        <div>
+        <div className="pb-10">
             <Banner />
             <div className="flex items-center justify-between mt-24 px-2 lg:px-8">
                 <div className="">

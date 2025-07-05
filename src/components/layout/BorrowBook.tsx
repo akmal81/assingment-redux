@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useCreateBorrowMutation, useGetSingleBookQuery} from "@/redux/api/baseApi"
+import { useCreateBorrowMutation, useGetSingleBookQuery } from "@/redux/api/baseApi"
 import { BookOpen, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
@@ -19,6 +19,7 @@ import { useNavigate } from "react-router"
 import { toast } from "sonner"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { Calendar } from "../ui/calendar"
+import Spinner from "./Spinner"
 
 interface IProps {
     id: string
@@ -31,10 +32,16 @@ export function BorrowBook({ id }: IProps) {
     const [date, setDate] = useState<Date | undefined>(undefined)
 
 
-    const{data}=useGetSingleBookQuery(id!);
-    const copies = data.book.copies
+    const { data, isLoading } = useGetSingleBookQuery(id!);
+    const [createBorrow] = useCreateBorrowMutation();
 
-    const [createBorrow] = useCreateBorrowMutation()
+
+    const copies = data?.book?.copies;
+
+
+    if (isLoading) {
+        return <Spinner />
+    };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -50,16 +57,16 @@ export function BorrowBook({ id }: IProps) {
         if (!borrowData.quantity && borrowData.quantity < 1) {
             toast.error("Please Provide quantity");
             return
-        }
+        };
         if (!borrowData.dueDate) {
             toast.error("Please Provide Due Date");
             return
-        }
+        };
 
-        if(copies< borrowData.quantity){
+        if (copies < borrowData.quantity) {
             toast.error(`Only ${copies} copies are available. Please provide a valid number within the available limit`);
             return
-        }
+        };
 
         try {
             await createBorrow(borrowData).unwrap();
@@ -69,10 +76,10 @@ export function BorrowBook({ id }: IProps) {
 
         } catch (error) {
             console.log(error)
-        }
+        };
 
 
-    }
+    };
 
     return (
         <Dialog open={openModal} onOpenChange={setOpenModal}>
