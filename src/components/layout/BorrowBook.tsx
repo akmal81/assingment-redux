@@ -12,15 +12,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useCreateBorrowMutation } from "@/redux/api/baseApi"
-
 import { BookOpen, ChevronDownIcon } from "lucide-react"
-
 import type React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { toast } from "sonner"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-
 import { Calendar } from "../ui/calendar"
 
 interface IProps {
@@ -34,6 +31,7 @@ export function BorrowBook({ id }: IProps) {
     const [date, setDate] = useState<Date | undefined>(undefined)
 
 
+
     const [createBorrow] = useCreateBorrowMutation()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +41,7 @@ export function BorrowBook({ id }: IProps) {
 
         const borrowData = {
             book: id,
-            quantity: parseInt(formData.get("quantity")as string, 10),
+            quantity: parseInt(formData.get("quantity") as string, 10),
             dueDate: date?.toISOString().replace("Z", "+00:00")
         }
 
@@ -72,7 +70,8 @@ export function BorrowBook({ id }: IProps) {
     return (
         <Dialog open={openModal} onOpenChange={setOpenModal}>
             <DialogTrigger asChild>
-                <Button variant="outline">Borrow Book <BookOpen /></Button>
+                <Button className="cursor-pointer"
+                    variant="link" title="Borrow book"><BookOpen /></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

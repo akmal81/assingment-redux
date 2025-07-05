@@ -6,7 +6,8 @@ import { Link } from "react-router";
 
 import Banner from "@/components/layout/banner";
 import { BookPlus } from "lucide-react";
-import BookCard from "@/components/layout/BookCard";
+// import BookCard from "@/components/layout/BookCard";
+import BookTable from "@/components/layout/BookTable";
 
 const Books = () => {
 
@@ -26,20 +27,36 @@ const Books = () => {
                 <div className="">
                     <h2 className="text-3xl font-bold">Popular Books</h2>
                 </div>
-                <div className="flex items-center justify-between"> 
+                <div className="flex items-center justify-between">
                     <Link to="/create-book">
-                    <Button className="bg-green-600"><BookPlus className="font-bold" />Add Book</Button></Link>
+                        <Button className="bg-green-500 text-black hover:bg-green-300"><BookPlus className="font-bold" />
+                            Add Book</Button></Link>
                 </div>
             </div>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8">
-                    {
-                        !isLoading &&
-                        data.books.map((book: IBook) => <BookCard book={book} key={book._id}></BookCard>)
-                    }
-                        
-                </div>
+            {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8"> */}
+            <div className="mt-16 px-10 py-10">
 
-
+                <table className="table-auto w-full border-collapse border border-gray-700 text-sm text-left">
+                    <thead className="bg-gray-800 text-white">
+                        <tr>
+                            <th className="px-4 py-2 border">Title</th>
+                            <th className="px-4 py-2 border">Author</th>
+                            <th className="px-4 py-2 border">Genre</th>
+                            <th className="px-4 py-2 border">ISBN</th>
+                            <th className="px-4 py-2 border">Description</th>
+                            <th className="px-4 py-2 border text-center">Copies</th>
+                            <th className="px-4 py-2 border text-center">Status</th>
+                            <th className="px-4 py-2 border text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            !isLoading &&
+                            data.books.map((book: IBook) => <BookTable book={book} key={book._id}></BookTable>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

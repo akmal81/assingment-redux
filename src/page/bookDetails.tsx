@@ -44,18 +44,17 @@ const coverImages = [
                         <p className=""><span className="">Genre: </span>{bookData?.genre} </p>
                         <p className=""><span className="">Isbn: </span>{bookData?.isbn}</p>
                         <p className=""><span className="">Copies: </span>{bookData?.copies}</p>
-
                         {
                             bookData?.copies ? <p>Availalbe</p> : <p className="text-red-700">Unavailalbe</p>
                         }
-
                         {
-                            !bookData?.copies ? <p className="text-red-700">Please wait return from other bowrror</p> :
-                                <BorrowBook id={id} />
+                            !bookData?.copies ? <p className="">Please wait return from other bowrror</p> :
+                                <div className="flex items-center"><BorrowBook id={id} /> <p  className="text-green-500">Borrow Book</p></div>
                         }
-                        <div>
+                        <div className="">
                             {
-                                !bookData?.copies && <Link to="/books" className=""><Button>Back to Home</Button></Link>
+                                !bookData?.copies && <Link to="/books" className="">
+                                    <Button variant="link" >Back to Home</Button></Link>
                             }
                         </div>
                     </div>

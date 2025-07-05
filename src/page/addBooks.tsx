@@ -72,7 +72,8 @@ const AddBook = () => {
     return (
         <>
         <OtherBanner level="Add Book"/>
-        <div className="max-w-4xl mx-auto  bg-gray-500/5 p-10 my-10 rounded-xl shadow-xl">
+      
+        <div className="max-w-4xl mx-auto  bg-gray-500/5 p-10 md:mt-24  rounded-xl shadow-xl">
             <p className="mb-4 text-xs"> Fields marked with <span className="text-red-500">*</span> are required</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -197,6 +198,7 @@ const AddBook = () => {
                 </form>
             </Form>
         </div>
+        
         </>
     )
 };

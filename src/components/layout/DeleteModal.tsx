@@ -33,25 +33,26 @@ export function DeleteModal({ id }: IProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="bg-white/0 hover:bg-white/0 cursor-pointer" title="Delete"><Trash2  className="text-red-700"/></Button>
+                <Button className="bg-white/0 hover:bg-white/0 cursor-pointer" title="Delete"><Trash2 className="text-red-700" /></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Share link</DialogTitle>
+                    <DialogTitle className="text-red-800"> <Trash2/></DialogTitle>
                     <DialogDescription>
-                        Are you sure you want to delete the book forever
+                        Are You Sure!! <span className="text-">Once you press delete button the book will remove permanently</span> 
                     </DialogDescription>
+
                 </DialogHeader>
 
-                <DialogFooter className="sm:justify-start">
+                <DialogFooter className="sm:justify-end">
                     <DialogClose asChild>
-                        
+
                         <Button variant="secondary" type="button">
                             Cancel
                         </Button>
                     </DialogClose>
                     <DialogClose asChild>
-                        
+
                         <Button variant="destructive" onClick={handleDelete} type="button">
                             Delete
                         </Button>

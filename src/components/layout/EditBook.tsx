@@ -100,7 +100,7 @@ const EditBookModal = ({ id }: IProps) => {
               placeholder="Copies"
             />
             <DialogFooter>
-              <Button type="submit" disabled={isUpdating}>
+              <Button className="bg-green-500 text-black hover:bg-green-300" type="submit" disabled={isUpdating}>
                 {isUpdating ? "Updating..." : "Udate Book"}
               </Button>
             </DialogFooter>

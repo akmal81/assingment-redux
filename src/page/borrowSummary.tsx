@@ -1,4 +1,5 @@
 import BorrowSummaryTable from "@/components/layout/BorrowSummaryTable";
+import OtherBanner from "@/components/layout/OtherBanner";
 import Spinner from "@/components/layout/Spinner";
 import { useGetBorrowSummaryQuery } from "@/redux/api/baseApi";
 import type { ISummary } from "@/type";
@@ -12,15 +13,17 @@ const BorrowSummary = () => {
     }
     console.log(data.summary)
     return (
-        <div className="mt-10">
-            <h1>Borrow Summary</h1>
+        <div className="">
+            <OtherBanner level="Borrow Summary"/>
 
-            <table className="min-w-full mt-6">
-                <thead >
+            <div className="p-10">
+
+            <table className="min-w-full mt-10">
+                <thead className="bg-black/10 rounded-t-md">
                     <tr>
-                        <th className="py-2 px-4 text-left border-b">Book Title</th>
-                        <th className="py-2 px-4 text-left border-b">ISBN</th>
-                        <th className="py-2 px-4 text-left border-b">Total Quantity Borrowed</th>
+                        <th className="py-2 px-4 border-b text-left">Book Title</th>
+                        <th className="py-2 px-4 border-b text-left">ISBN</th>
+                        <th className="py-2 px-4  border-b text-center">Total Quantity Borrowed</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +34,7 @@ const BorrowSummary = () => {
                 </tbody>
 
             </table>
-
+</div>
 
         </div>
     );

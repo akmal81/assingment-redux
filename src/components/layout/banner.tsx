@@ -15,7 +15,7 @@ const Banner = () => {
                     </h1>
                     <p className="text-white">Your one stop library management system</p>
                     <Link to="/create-book">
-                        <Button className="bg-green-600"><BookPlus className="font-bold" />Add Book</Button></Link>
+                        <Button className="bg-green-500 text-black hover:bg-green-300"><BookPlus className="font-bold" />Add Book</Button></Link>
                 </div>
             </div>
         </div>

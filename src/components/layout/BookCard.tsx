@@ -27,17 +27,18 @@ const BookCard = ({ book }: IProps) => {
 
 
     return (
-         <Link to={`/books/${book._id}`}>
         <div className="mt-4 p-2 rounded-md shadow-xl">
+            <Link to={`/books/${book._id}`}>
             <img src={image} />
+        </Link>
             <div className="mt-4 flex flex-col flex-grow  space-y-3">
                 <h4 className="font-semibold text-xl text-center">
                     {book.title}
                 </h4>
-                <p className="text-center"><span className="font-normal text-gray-600">Author:</span>  {book.author}</p>
-                <p className="text-center"><span className="font-normal text-gray-600">Genre:</span>  {book.genre}</p>
-                <p className="text-center"><span className="font-normal text-gray-600">Isbn:</span>  {book.author}</p>
-                <p className="text-center"><span className="font-normal text-gray-600">Copies:</span>  {book.copies}</p>
+                <p className="text-center"><span className="font-normal text-gray-500">Author:</span>  {book.author}</p>
+                <p className="text-center"><span className="font-normal text-gray-400">Genre:</span>  {book.genre}</p>
+                <p className="text-center"><span className="font-normal text-gray-500">Isbn:</span>  {book.author}</p>
+                <p className="text-center"><span className="font-normal text-gray-500">Copies:</span>  {book.copies}</p>
                 {/* <p className="text-center"><span className="font-normal text-gray-600"></span>  {
                     !book.copies ? "Unavailable":"Availale"
                 }</p> */}
@@ -53,7 +54,7 @@ const BookCard = ({ book }: IProps) => {
                 <Link to={`/books/${book._id}`}><BookOpen className="text-xs" /></Link>
                 <DeleteModal id={book._id} />
             </div>
-        </div></Link>
+        </div>
     );
 };
 
