@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useCreateBorrowMutation} from "@/redux/api/baseApi"
+import { useCreateBorrowMutation, useGetSingleBookQuery} from "@/redux/api/baseApi"
 import { BookOpen, ChevronDownIcon } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
@@ -31,9 +31,8 @@ export function BorrowBook({ id }: IProps) {
     const [date, setDate] = useState<Date | undefined>(undefined)
 
 
-    // const{data}=useGetSingleBookQuery(id);
-    // const bookData = data.book
-    // console.log(bookData.copies)
+    const{data}=useGetSingleBookQuery(id!);
+    const copies = data.book.copies
 
     const [createBorrow] = useCreateBorrowMutation()
 
@@ -57,10 +56,10 @@ export function BorrowBook({ id }: IProps) {
             return
         }
 
-        // if(bookData.copies< borrowData.quantity){
-        //     toast.error(`Only ${bookData.copies} copies are available. Please provide a valid number within the available limit`);
-        //     return
-        // }
+        if(copies< borrowData.quantity){
+            toast.error(`Only ${copies} copies are available. Please provide a valid number within the available limit`);
+            return
+        }
 
         try {
             await createBorrow(borrowData).unwrap();
