@@ -68,7 +68,7 @@ export const baseApi = createApi({
                     method: "DELETE",
 
                 }),
-                invalidatesTags: ["book"],
+                invalidatesTags: ["book","borrowSummary"],
             }),
 
 

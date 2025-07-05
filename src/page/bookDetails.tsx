@@ -17,7 +17,6 @@ const BookDetails = () => {
         return <Spinner />
     }
 
-
 const coverImages = [
         cover1,
         cover2,
@@ -27,7 +26,6 @@ const coverImages = [
 
     const randomIndex = Math.floor(Math.random() * coverImages.length);
     const image = coverImages[randomIndex]
-
 
     return (
         <>

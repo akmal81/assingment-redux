@@ -18,5 +18,4 @@ const OtherBanner = ({level}:IProps) => {
         </div>
     );
 };
-
 export default OtherBanner;

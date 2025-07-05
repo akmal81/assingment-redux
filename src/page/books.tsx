@@ -29,13 +29,13 @@ const Books = () => {
                 </div>
                 <div className="flex items-center justify-between gap-6">
                     <div className="flex flex-nowrap gap-1">
-                        <button onClick={() => setView(!view)}><Table2Icon className={cn(
-                            "text-gray-800",
+                        <button onClick={() => setView(!view)}
+                            ><Table2Icon className={cn(
+                            "text-gray-800 cursor-pointer",
                             !view && "text-green-500"
                         )} /></button>
-
                         <button onClick={() => setView(!view)}><Grid2X2 className={cn(
-                            "text-gray-800",
+                            "text-gray-800 cursor-pointer",
                             view && "text-green-500"
                         )} /></button>
                     </div>
@@ -44,17 +44,9 @@ const Books = () => {
                             Add Book</Button></Link>
                 </div>
             </div>
-            {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:px-8"> */}
-            {/* <div className="flex justify-end px-10 mt-16">
-                <button onClick={()=>setView(!view)}>{view?<div className="flex gap-2 cursor-pointer"><Table2/></div>:
-                <div className="flex gap-2 cursor-pointer"><Grid/></div>}</button>
-            </div> */}
-
-
-
+        
             {!view ?
                 <div className="px-10 mt-10">
-
                     <table className="table-auto w-full border-collapse border border-gray-700 text-sm text-left">
                         <thead className="bg-green-800/75 text-white">
                             <tr>
@@ -78,12 +70,10 @@ const Books = () => {
                 </div>
                 :
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-8 lg:px-8">
-
                     {
                         !isLoading &&
                         data.books.map((book: IBook) => <BookCard book={book} key={book._id}></BookCard>)
                     }
-
                 </div>
             }
         </div>

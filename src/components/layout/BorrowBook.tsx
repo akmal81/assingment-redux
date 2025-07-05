@@ -31,13 +31,10 @@ export function BorrowBook({ id }: IProps) {
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState<Date | undefined>(undefined)
 
-
     const { data, isLoading } = useGetSingleBookQuery(id!);
     const [createBorrow] = useCreateBorrowMutation();
 
-
     const copies = data?.book?.copies;
-
 
     if (isLoading) {
         return <Spinner />
@@ -117,8 +114,7 @@ export function BorrowBook({ id }: IProps) {
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto overflow-hidden p-0" align="start">
                                         <Calendar
-                                            mode="single"
-                                            // selected={new Date()}
+                                            mode="single"                                
                                             captionLayout="dropdown"
                                             onSelect={(date) => {
                                                 setDate(date)
@@ -130,8 +126,6 @@ export function BorrowBook({ id }: IProps) {
                                     </PopoverContent>
                                 </Popover>
                             </div>
-
-
                         </div>
                     </div>
                     <DialogFooter>

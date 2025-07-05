@@ -1,9 +1,6 @@
 import type { IBook } from "@/type";
-// import { BookOpen } from "lucide-react";
-// import { Link } from "react-router";
 import { EditBookModal } from "./EditBook";
 import { DeleteModal } from "./DeleteModal";
-// import { cn } from "@/lib/utils";
 import { BorrowBook } from "./BorrowBook";
 import { Button } from "../ui/button";
 import { BookOpen } from "lucide-react";
@@ -64,11 +61,6 @@ const BookTable = ({ book }: IProps) => {
                         </TooltipContent>
                     </Tooltip>
 
-
-                    {/* <Link className="cursor-pointer" to={`/books/${book._id}`}>
-                        <BookOpen className={cn("text-green-500",
-                            book.copies === 0 && "text-red-500"
-                        )} /></Link> */}
                     <Tooltip>
                         <TooltipTrigger>
 

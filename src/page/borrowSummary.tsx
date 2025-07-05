@@ -14,28 +14,23 @@ const BorrowSummary = () => {
     console.log(data.summary)
     return (
         <div className="">
-            <OtherBanner level="Borrow Summary"/>
-
+            <OtherBanner level="Borrow Summary" />
             <div className="p-10">
-
-            <table className="min-w-full mt-10">
-                <thead className="bg-green-800/75 text-white">
-                    <tr>
-                        <th className="py-2 px-4 border-b text-left ">Book Title</th>
-                        <th className="py-2 px-4 border-b text-left">ISBN</th>
-                        <th className="py-2 px-4  border-b text-center">Total Quantity Borrowed</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {
-                        !isLoading && data.summary.map((summary: ISummary) => <BorrowSummaryTable summary={summary} />)
-                    }
-                </tbody>
-
-            </table>
-</div>
-
+                <table className="min-w-full mt-10">
+                    <thead className="bg-green-800/75 text-white">
+                        <tr>
+                            <th className="py-2 px-4 border-b text-left ">Book Title</th>
+                            <th className="py-2 px-4 border-b text-left">ISBN</th>
+                            <th className="py-2 px-4  border-b text-center">Total Quantity Borrowed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            !isLoading && data.summary.map((summary: ISummary) => <BorrowSummaryTable summary={summary} />)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

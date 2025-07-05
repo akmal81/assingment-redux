@@ -1,10 +1,6 @@
 
 "use client"
 
-// import { zodResolver } from "@hookform/resolvers/zod"
-// import { useForm } from "react-hook-form"
-// import { z } from "zod"
-
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -26,18 +22,11 @@ import { Input } from "@/components/ui/input"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import type { IBook } from "@/type"
 import { useCreateBookMutation } from "@/redux/api/baseApi"
-// import { toast } from "sonner"
-// import Spinner from "@/components/layout/Spinner"
+
 import { toast } from "sonner"
 import { useNavigate } from "react-router"
 import OtherBanner from "@/components/layout/OtherBanner"
 
-
-// const formSchema = z.object({
-//   username: z.string().min(2, {
-//     message: "Username must be at least 2 characters.",
-//   }),
-// })
 
 const AddBook = () => {
     const navigate = useNavigate()
@@ -56,7 +45,6 @@ const AddBook = () => {
 
     const [createBook] = useCreateBookMutation();
 
-
     const onSubmit: SubmitHandler<IBook> = async (data) => {
 
         const bookData = {
@@ -71,8 +59,7 @@ const AddBook = () => {
 
     return (
         <>
-        <OtherBanner level="Add Book"/>
-      
+        <OtherBanner level="Add Book"/>    
         <div className="max-w-4xl mx-auto  bg-gray-500/5 p-10 md:mt-24  rounded-xl shadow-xl">
             <p className="mb-4 text-xs"> Fields marked with <span className="text-red-500">*</span> are required</p>
             <Form {...form}>
@@ -80,7 +67,6 @@ const AddBook = () => {
                     {/* first row */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* title */}
-
                         <FormField
                             control={form.control}
                             name="title"
@@ -94,7 +80,6 @@ const AddBook = () => {
                                 </FormItem>
                             )}
                         />
-
                         {/* author */}
                         <FormField
                             control={form.control}
@@ -185,7 +170,6 @@ const AddBook = () => {
                                             placeholder="Book Copies"
                                             {...field}
                                             onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
-                                        // value={parseInt(field.value) || 0}
                                         />
                                     </FormControl>
                                     <FormMessage />

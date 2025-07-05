@@ -26,13 +26,10 @@ const EditBookModal = ({ id }: IProps) => {
   const { data: book, isLoading } = useGetSingleBookQuery(id!);
   const [updateBook, { isLoading: isUpdating }] = useUpdateBookMutation();
 
-  // console.log(book.book)
-
   const {
     register,
     handleSubmit,
     reset,
-    // formState: { errors },
   } = useForm<IBook>();
 
   useEffect(() => {
@@ -86,11 +83,9 @@ const EditBookModal = ({ id }: IProps) => {
               <option value="HISTORY" className="text-black">HISTORY</option>
               <option value="BIOGRAPHY" className="text-black">BIOGRAPHY</option>
               <option value="FANTASY" className="text-black">FANTASY</option>
-
             </select>
 
             <label>Isbn</label>
-
             <Input {...register("isbn", { required: true })} placeholder="ISBN" />
             <label>Description</label>
             <Input {...register("description", { required: true })} placeholder="Description" />
