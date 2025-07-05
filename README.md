@@ -1,4 +1,14 @@
-# 📚 Assignment Redux
+# 📚 Library MS
+
+minimal library management system. This system will allow users to view 
+a list of books, 
+perform CRUD operations, 
+borrow books, 
+and view a simple borrow summary without authentication.
+
+A functional and clean client-side application that interacts with a RESTful API, 
+demonstrating proper state management, 
+UI design, and core functionality.
 
 A React-based book management system that allows users to view, borrow, and manage book data using **Redux Toolkit** and **RTK Query**. Built with a modern stack including **Tailwind CSS**, **React Router**, and **TypeScript**.
 
@@ -40,4 +50,12 @@ cd assingment-redux
 npm install
 
 npm run dev
+
+
+📷 ![Home Page](./screenshots/home.png)
+📷 ![Book Details](./screenshots/book-details.png)
+
+🔗 Connect
+Author: Akmal Hossain
+GitHub: @akmal81
 
