@@ -37,15 +37,15 @@ A React-based book management system that allows users to view, borrow, and mana
 
 ## 🔁 Backend (MVC Pattern)
 
-# Database MongoBD
+#### Database MongoBD
 
 - 🔁 Books (with attributes like title, author, genre, isbn, description, copies, available)
 - 🔁 Borrows (linked to book, quantity, dueDate etc)
 
-# Book Management:
+#### Book Management:
 - 🔁 Implement CRUD operations for book (create, read, update, delete).
 
-# Borrow Management
+#### Borrow Management
 - 🔁 Execute CRUD operations for borrow (borrow, summery), ensuring copies levels before borrow are placed.
 
 ---
